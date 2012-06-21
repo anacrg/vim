@@ -249,6 +249,13 @@ endfunction
 
 call SetArrowKeysAsTextShifters()
 
+" Single insertion
+function! RepeatChar(char, count)
+    return repeat(a:char, a:count)
+endfunction
+nnoremap s :<C-U>exec "normal i".RepeatChar(nr2char(getchar()), v:count1)<cr>
+nnoremap S :<C-U>exec "normal a".RepeatChar(nr2char(getchar()), v:count1)<cr>
+
 " Add the virtualenv's site-packages to vim path
 py << EOF
 import os.path
