@@ -41,12 +41,12 @@ map <c-l> <c-w>l
 map <c-h> <c-w>h
 
 filetype off
-call pathogen#infect() 
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 filetype on
 filetype indent on
 filetype plugin on
+syntax on
 
 " Code completion from hell
 au FileType python set omnifunc=pythoncomplete#Complete
@@ -68,17 +68,6 @@ map <leader>n :NERDTreeToggle<CR>
 let g:vimrplugin_term = "xterm"
 let g:vimrplugin_nosingler = 1
 
-"aunmenu ToolBar.FindNext
-"aunmenu ToolBar.FindPrev
-"aunmenu ToolBar.Print
-"aunmenu ToolBar.SaveAll
-"aunmenu ToolBar.Undo
-"aunmenu ToolBar.Redo
-"aunmenu ToolBar.SaveSesn
-"aunmenu ToolBar.LoadSesn
-"aunmenu ToolBar.RunScript
-"aunmenu ToolBar.RunCtags
-
 " Suffixes that get lower priority when doing tab completion for filenames.
 " These are files we are not likely to want to edit or read.
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
@@ -92,59 +81,6 @@ endif
 
 " Make p in Visual mode replace the selected text with the "" register.
 vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
-
-" Well-known emacs/tcsh keys
-imap <C-A> <ESC>0i
-nmap <C-A> <ESC>0
-cmap <C-A> <Home>
-nmap <C-E> $
-imap <C-E> <ESC>A
-" cmap <C-E> <HOME> is builtin
-
-
-" Vim5 and later versions support syntax highlighting. Uncommenting the next
-" line enables syntax highlighting by default.
-if &t_Co > 2 || has("gui_running")
-    syntax on
-    set hlsearch
-endif
-
-if has("autocmd")
- " Enabled file type detection
- " Use the default filetype settings. If you also want to load indent files
- " to automatically do language-dependent indenting add 'indent' as well.
- filetype plugin indent on
- 
- autocmd FileType text setlocal textwidth=72
-  
- autocmd BufReadPost *
-    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal g`\"" |
-    \ endif
-
-endif " has ("autocmd")
-
-" Some Debian-specific things
-augroup filetype
-  au BufRead reportbug.*		set ft=mail
-  au BufRead reportbug-*		set ft=mail
-augroup END
-
-augroup cprog
-    au!
-    autocmd BufRead *       set formatoptions=tcql nocindent comments&
-    autocmd BufRead *.c,*.h set formatoptions=croql cindent comments=sr:/*,mb:*,el:*/,://
-augroup END
-
-" Set paper size from /etc/papersize if available (Debian-specific)
-if filereadable('/etc/papersize')
-  let s:papersize = matchstr(system('/bin/cat /etc/papersize'), '\p*')
-  if strlen(s:papersize)
-    let &printoptions = "paper:" . s:papersize
-  endif
-  unlet! s:papersize
-endif
-
 
 " The following are commented out as they cause vim to behave a lot
 " different from regular vi. They are highly recommended though.
