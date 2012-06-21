@@ -1,5 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/home/diogro/MainProject/Modularidade/Jones07/figuras-relatorio-final/2tracos'
 let g:netrw_dirhist_2='/home/diogro/Dropbox'
 let g:netrw_dirhist_3='/home/diogro'
+let g:netrw_dirhist_4='/home/diogro/.vim/bundle/r-plugin'
+let g:netrw_dirhist_5='/home/diogro/.vim/bundle/r-plugin/r-plugin'
+let g:netrw_dirhist_6='/home/diogro/.vim/bundle/r-plugin'
+let g:netrw_dirhist_7='/home/diogro/.vim/bundle/r-plugin/syntax'
+let g:netrw_dirhist_8='/home/diogro/.vim/bundle/r-plugin/autoload'
+let g:netrw_dirhist_9='/home/diogro/.vim'

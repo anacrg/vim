@@ -41,6 +41,7 @@ map <c-l> <c-w>l
 map <c-h> <c-w>h
 
 filetype off
+call pathogen#infect() 
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 filetype on
