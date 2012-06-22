@@ -62,6 +62,9 @@ set completeopt=menuone,longest,preview
 let mapleader = '_'
 let maplocalleader = '_'
 
+" ack grep pra ubuntu
+let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+
 " Abrindo a TODO list
 map <leader>td <Plug>TaskList
 
