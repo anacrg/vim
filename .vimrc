@@ -16,23 +16,29 @@ set foldmethod=indent
 set foldlevel=99
 set textwidth=72	
 set nobackup		" Don't keep a backup file
-set viminfo='20,\"50	" read/write a .viminfo file, don't store more than
-			" 50 lines of registers
+set viminfo='20,\"50	" read/write a .viminfo file, don't store more than  50 lines of registers
 set history=500		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
-set incsearch
+set incsearch   " busca em tempo real
 set background=dark
 set tabstop=4
-set expandtab
-set shell=/bin/bash
+set expandtab   " tab convertido em espaços
+set shell=/bin/zsh " padrão costuma ser bash
 set cpoptions+=$ " change com limites
-set vb t_vb= " visual bell 
+set vb t_vb= " visual bell desligado, pra não piscar o display
 set clipboard=unnamed " copiar e colar com o registro do sistema
-set hidden
-set shiftwidth=4
+set shiftwidth=4   " tamanho do indent
 set cinkeys=0{,0},:,0#,!<Tab>,!^F
 set virtualedit=all " espaços virtuais
 set wildmenu
+set showcmd		" Show (partial) command in status line.
+set showmatch		" Show matching brackets.
+set ignorecase		" Do case insensitive matching
+set incsearch		" Incremental search
+set number          " linhas numeradas
+set shellslash
+set grepprg=grep\ -nH\ $*
+set autowrite		" Automatically save before commands like :next and :make
 
 " mapeando as mudancas de janela
 map <c-j> <c-w>j
@@ -65,6 +71,9 @@ map <leader>g :GundoToggle<CR>CR
 " Abrindo lista de arquivos
 map <leader>n :NERDTreeToggle<CR>
 
+" Atalho pra \(\), coloca o cursor dentro do agrupador
+cmap ;\ \(\)<Left><Left>
+
 let g:vimrplugin_term = "xterm"
 let g:vimrplugin_nosingler = 1
 
@@ -72,35 +81,19 @@ let g:vimrplugin_nosingler = 1
 " These are files we are not likely to want to edit or read.
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
 
-" We know xterm-debian is a color terminal
-if &term =~ "xterm-debian" || &term =~ "xterm-xfree86"
-  set t_Co=16
-  set t_Sf=[3%dm
-  set t_Sb=[4%dm
-endif
-
 " Make p in Visual mode replace the selected text with the "" register.
 vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 
-" The following are commented out as they cause vim to behave a lot
-" different from regular vi. They are highly recommended though.
-set showcmd		" Show (partial) command in status line.
-set showmatch		" Show matching brackets.
-set ignorecase		" Do case insensitive matching
-set incsearch		" Incremental search
-set number
-set shellslash
-set grepprg=grep\ -nH\ $*
-set autowrite		" Automatically save before commands like :next and :make
-
-" User specific config
-"
+" Alguns atalhos simples.
 ab #i #include <>
 ab #d #define
 ab #f for(;;){}
 ab #w while(){}
 
 map *<C-V>  {!}par 
+
+
+" Arrow key remapping: Up/Dn = move line up/dn; Left/Right = indent/unindent
 
 function! DelEmptyLineAbove()
     if line(".") == 1
@@ -143,7 +136,6 @@ function! AddEmptyLineBelow()
     call append(line("."), "")
 endfunction
 
-" Arrow key remapping: Up/Dn = move line up/dn; Left/Right = indent/unindent
 function! SetArrowKeysAsTextShifters()
     " normal mode
     nmap <silent> <right> >> 
@@ -199,9 +191,9 @@ import os.path
 import sys
 import vim
 if 'VIRTUAL_ENV' in os.environ:
-   project_base_dir = os.environ['VIRTUAL_ENV']
-   sys.path.insert(0, project_base_dir)
-   activate_this = os.path.join(project_base_dir,
-   'bin/activate_this.py')
-   execfile(activate_this, dict(__file__=activate_this))
-EOF
+    project_base_dir = os.environ['VIRTUAL_ENV']
+    sys.path.insert(0, project_base_dir)
+    activate_this = os.path.join(project_base_dir,
+    'bin/activate_this.py')
+    execfile(activate_this, dict(__file__=activate_this))
+    EOF
