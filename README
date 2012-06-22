@@ -1,1 +1,14 @@
 alguns plugins de vim, só coisa fina
+
+Para instalar:
+
+git clone git@github.com:diogro/vim.git .vim
+cd .vim
+git submodules update --init
+
+Inluir as linhas no .vimrc, antes do 'filetype on'
+
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+
+Veja o .vim/.vimrc para outras opções.
