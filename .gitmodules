@@ -55,3 +55,6 @@
 [submodule "bundle/pyflakes"]
 	path = bundle/pyflakes
 	url = https://github.com/mitechie/pyflakes-pathogen.git
+[submodule "bundle/VimCom"]
+	path = bundle/VimCom
+	url = https://github.com/jalvesaq/VimCom.git
