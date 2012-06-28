@@ -2,7 +2,7 @@ alguns plugins de vim, só coisa fina
 
 Para instalar:
 
-git clone git@github.com:diogro/vim.git .vim
+git clone https://github.com/diogro/vim.git .vim
 cd .vim
 git submodules update --init
 
