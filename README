@@ -4,7 +4,7 @@ Para instalar:
 
 git clone https://github.com/diogro/vim.git .vim
 cd .vim
-git submodules update --init
+git submodule update --init
 
 Inluir as linhas no .vimrc, antes do 'filetype on'
 
